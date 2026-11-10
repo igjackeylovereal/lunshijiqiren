@@ -1,0 +1,15 @@
+<launch>
+  <!-- Planning services only. No base, kinematics, joystick, lidar driver or goal sender. -->
+  <arg name="map_yaml" />
+  <group ns="practicum_preview">
+    <remap from="cmd_vel" to="/practicum_preview/blocked_cmd_vel" />
+    <remap from="move_base_simple/goal" to="/practicum_preview/manual_goal_disabled" />
+    <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_yaml)" />
+    <include file="$(find bobac2_navigation)/launch/move_base.launch">
+      <arg name="laser_topic" value="/scan" />
+      <arg name="odom_topic" value="/odom" />
+      <arg name="custom_param_file" value="$(find bobac_practicum)/config/navigation_preview.yaml" />
+    </include>
+    <!-- All velocity and external goal topics remain isolated from physical controls. -->
+  </group>
+</launch>

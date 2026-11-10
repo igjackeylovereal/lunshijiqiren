@@ -1,0 +1,15 @@
+<launch>
+  <arg name="allow_wheel_commands" default="false" />
+  <!-- Read feedback by default. Enabled I/O consumes only the guarded velocity stream. -->
+  <node pkg="bobac_practicum" type="base_io.py" name="bobac2_base_node" output="screen">
+    <param name="serial_port" value="/dev/ttyS0" />
+    <param name="read_only" type="bool" value="$(eval not arg('allow_wheel_commands'))" />
+    <remap from="cmd_vel" to="/practicum_base/cmd_vel_safe" />
+  </node>
+  <group if="$(arg allow_wheel_commands)">
+    <node pkg="bobac_practicum" type="velocity_watchdog.py" name="practicum_velocity_watchdog" output="screen">
+      <remap from="guarded_cmd_vel" to="/practicum_base/cmd_vel_safe" />
+      <param name="timeout" value="0.3" />
+    </node>
+  </group>
+</launch>

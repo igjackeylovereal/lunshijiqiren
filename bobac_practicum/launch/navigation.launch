@@ -1,0 +1,40 @@
+<launch>
+  <!-- A real map path is mandatory. No sample room map is silently selected. -->
+  <arg name="map_yaml" />
+  <arg name="start_base" default="false" />
+  <arg name="start_lidar" default="false" />
+  <arg name="allow_wheel_commands" default="false" />
+  <arg name="initial_pose_x" default="0" />
+  <arg name="initial_pose_y" default="0" />
+  <arg name="initial_pose_a" default="0" />
+  <arg name="max_linear_speed" default="0.08" />
+  <arg name="max_angular_speed" default="0.15" />
+  <param name="robot_description" textfile="$(find bobac2_description)/urdf/bobac2_description.urdf" />
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" />
+  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher" />
+  <group if="$(arg start_base)">
+    <include file="$(find bobac_practicum)/launch/base_for_mapping.launch">
+      <arg name="allow_wheel_commands" value="$(arg allow_wheel_commands)" />
+    </include>
+  </group>
+  <include if="$(arg start_lidar)" file="$(find bobac_practicum)/launch/laser_static.launch" />
+  <node pkg="bobac_practicum" type="wheel_odometry.py" name="practicum_wheel_odometry" output="screen" />
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_yaml)" />
+  <include file="$(find bobac2_navigation)/launch/amcl.launch">
+    <arg name="initial_pose_x" value="$(arg initial_pose_x)" />
+    <arg name="initial_pose_y" value="$(arg initial_pose_y)" />
+    <arg name="initial_pose_a" value="$(arg initial_pose_a)" />
+  </include>
+  <include file="$(find bobac2_navigation)/launch/move_base.launch" />
+  <!-- Apply before move_base starts; first live tests stay slow and avoid automatic spins. -->
+  <param name="/move_base_node/TebLocalPlannerROS/max_vel_x" type="double" value="$(arg max_linear_speed)" />
+  <param name="/move_base_node/TebLocalPlannerROS/max_vel_x_backwards" type="double" value="0.04" />
+  <param name="/move_base_node/TebLocalPlannerROS/max_vel_theta" type="double" value="$(arg max_angular_speed)" />
+  <!-- max_vel_x(0.08) 必须大于 penalty_epsilon，否则 TEB 报 negative bound、无有效轨迹 -->
+  <param name="/move_base_node/TebLocalPlannerROS/penalty_epsilon" type="double" value="0.02" />
+  <param name="/move_base_node/oscillation_timeout" type="double" value="20.0" />
+  <param name="/move_base_node/planner_patience" type="double" value="10.0" />
+  <param name="/move_base_node/controller_patience" type="double" value="5.0" />
+  <param name="/move_base_node/controller_frequency" type="double" value="10.0" />
+  <param name="/move_base_node/recovery_behavior_enabled" type="bool" value="false" />
+</launch>

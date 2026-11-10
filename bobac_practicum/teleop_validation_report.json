@@ -1,0 +1,86 @@
+{
+  "status": {
+    "profile": "initial_forward_test", 
+    "max_pulse_seconds": 0.6, 
+    "max_initial_travel": 0.1, 
+    "enabled": true, 
+    "halted": true, 
+    "ready": false, 
+    "reason": "\u9065\u63a7\u5df2\u6682\u505c\uff0c\u8bf7\u91cd\u65b0\u542f\u7528", 
+    "session": "2e6a766c49ef4ce2a70828ca5d8b59e9", 
+    "health": {
+      "forward_clearance": 0.1430782258837087, 
+      "linear_speed": 0.0, 
+      "angular_speed": 0.0, 
+      "scan_fresh": true, 
+      "odom_fresh": false, 
+      "pose": [
+        -0.0643510420239291, 
+        0.0803666172180798
+      ], 
+      "map_ready": false
+    }, 
+    "max_speed": 0.05, 
+    "active": false, 
+    "command_vx": 0.0
+  }, 
+  "requires_ground_and_estop_check": true, 
+  "current_halted": true, 
+  "actual_motor_command_publishers": {}, 
+  "unit_tests_passed": 57, 
+  "motor_chain_stopped": true, 
+  "physical_motion_success": false, 
+  "zero_write_test": {
+    "all_written_values_zero": true, 
+    "port": "/dev/ttyS0", 
+    "transactions": [
+      {
+        "operation": "read_input", 
+        "values": null, 
+        "result": 49, 
+        "error": ""
+      }, 
+      {
+        "operation": "write_zero_13", 
+        "values": null, 
+        "result": 13, 
+        "error": ""
+      }, 
+      {
+        "operation": "write_zero_12", 
+        "values": null, 
+        "result": 12, 
+        "error": ""
+      }, 
+      {
+        "operation": "read_holding", 
+        "values": [
+          0, 
+          0, 
+          0, 
+          0, 
+          0, 
+          0, 
+          0, 
+          0, 
+          0, 
+          0, 
+          0, 
+          0, 
+          0
+        ], 
+        "result": 13, 
+        "error": ""
+      }, 
+      {
+        "operation": "read_input_after", 
+        "values": null, 
+        "result": 49, 
+        "error": ""
+      }
+    ]
+  }, 
+  "telemetry_recording_paused": true, 
+  "operator_ground_confirmation_pending": true, 
+  "classroom_map_complete": false
+}

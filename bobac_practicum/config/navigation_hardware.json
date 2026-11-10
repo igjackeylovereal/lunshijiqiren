@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-03",
+  "motion_enabled": false,
+  "chassis": {
+    "type": "two_wheels",
+    "kinematics_mode": 2,
+    "confirmation": "operator_observed_two_drive_wheels_and_casters",
+    "wheel_radius_nominal_m": 0.068,
+    "wheel_separation_nominal_m": 0.32374,
+    "dimensions_calibrated": false,
+    "encoder_feedback_verified": true,
+    "wheel_motion_validated": false,
+    "serial_port": "/dev/ttyS0"
+  },
+  "lidar": {
+    "verified": true,
+    "driver": "rplidarNode_A1",
+    "serial_port": "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0",
+    "serial_baudrate": 115200,
+    "topic": "/scan",
+    "frame": "laser_rada_Link",
+    "observed_hz": 7.655,
+    "configured_fov_degrees": 240,
+    "frame_points": 241,
+    "valid_points_example": 188
+  },
+  "classroom_map": {
+    "status": "draft_started_then_paused_for_drive_diagnosis",
+    "confirmed_yaml": null
+  },
+  "parking_target": {
+    "status": "operator_will_select_after_map_exists",
+    "pose": null,
+    "map_id": null
+  }
+}

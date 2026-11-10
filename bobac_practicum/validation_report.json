@@ -1,0 +1,650 @@
+{
+  "audio_output": "pc",
+  "face_accuracy": null,
+  "positive_final_trial": {
+    "multiple_face_frames": 29,
+    "duration_seconds": 12.022602081298828,
+    "authorized_events": 1,
+    "expected": "p001",
+    "timestamp": 1793669444.92711,
+    "last_controller": {
+      "target": null,
+      "person": null,
+      "state": "PAUSED",
+      "simulated": true,
+      "reply": "当前交互身份需要重新确认。",
+      "motion_enabled": false
+    },
+    "actual_navigation": false,
+    "sufficient_single_face_frames": true,
+    "valid_single_face_frames": 26,
+    "frames": 55,
+    "similarity_min": 0.9037529826164246,
+    "threshold": 0.82,
+    "similarity_max": 0.9655892848968506,
+    "course_accuracy": null,
+    "matched_candidate_frames": 26
+  },
+  "host": "reinovo",
+  "date": "2026-11-03",
+  "motion_enabled": false,
+  "live_jpeg": true,
+  "pc_wav_bytes": 117164,
+  "navigation_preflight": {
+    "serial_devices": [
+      {
+        "resolved": "/dev/ttyUSB0",
+        "path": "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0"
+      }
+    ],
+    "sensor_publishers": {},
+    "this_probe_sends_motion_commands": false,
+    "unmarked_places": [
+      "classroom"
+    ],
+    "timestamp": 1793668727.185032,
+    "audio_output": "pc",
+    "speed_publishers": {},
+    "expected_action": "/move_base_node",
+    "candidate_maps": [
+      {
+        "origin": [
+          -10.0,
+          -10.0,
+          0.0
+        ],
+        "image_sha256": "febb0069b7b081fff68ed39b32984c5d0c28ac3c3a3895afc6204311d130bb72",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1031-2.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1031-2.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          -22.8,
+          -21.2,
+          0.0
+        ],
+        "image_sha256": "ff41a4554014a5cc91587946e4ee075106e1aa3de84fb006e2ef69508cdf0c19",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1031-3.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1031-3.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          -22.8,
+          -10.0,
+          0.0
+        ],
+        "image_sha256": "92651c28c103a6982336e1500dcc2132e797738d59e569dd61dea96e60ef4b71",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1031-4.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1031-4.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          -10.0,
+          -10.0,
+          0.0
+        ],
+        "image_sha256": "049fd3b811df456576f21f862b637cf04fa9bbdb260b48c49684a763edd98f2a",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1031.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1031.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          -10.0,
+          -22.8,
+          0.0
+        ],
+        "image_sha256": "6258966fb88a94a87326908b250d261ab14cded6213fec49e188e583a34d5885",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1107.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1107.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          -10.0,
+          -10.0,
+          0.0
+        ],
+        "image_sha256": "57097fb098a8f5e910a779b68644524a25b994a241926033e3a59dc5bab738a3",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/123.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/123.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          -21.2,
+          -21.2,
+          0.0
+        ],
+        "image_sha256": "391b474d30e860cfb186c4c73bf18f0fe998e2e8c4fa63b959f6de216cdf1f74",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1234.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/1234.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          -10.0,
+          -10.0,
+          0.0
+        ],
+        "image_sha256": "d516ffc7646bf21c4b0fee23679d12ed9172030fc9f1b358dc0898f01fac7b41",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/666.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/666.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          -46.8,
+          -54.8,
+          0.0
+        ],
+        "image_sha256": "75cfed8e0cc2cdb28379824d43b3abc75390697ec0c3cd8653474d1f189d1d37",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/big_room.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/big_room.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          -10.0,
+          -21.2,
+          0.0
+        ],
+        "image_sha256": "e96eb330ecb29b0a504aad8915fe67fdad987000748208e71e4a83093e6ac9d0",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/huichang.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/huichang.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          -10.0,
+          -10.0,
+          0.0
+        ],
+        "image_sha256": "0b17647a9397fb0d74ea81af390a9f5841ccc6008b3c59a67a9d17dfe19dd8a6",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/map.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/map.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          -10.0,
+          -26.0,
+          0.0
+        ],
+        "image_sha256": "2921561a7d996d069a9d7a5f927143a8c72af672fba0594579d496df86990b20",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/room.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/room.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.05
+      },
+      {
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "image_sha256": "d7644ea5eabbbc77dcb6f136774f9b159a6514151f9c411bbd6c383f592bd6e0",
+        "image": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/willow-2010-02-18-0.10.pgm",
+        "yaml": "/home/bobac2/bobac2_ws/src/bobac2_navigation/maps/willow-2010-02-18-0.10.yaml",
+        "classroom_confirmed": false,
+        "resolution": 0.1
+      }
+    ],
+    "blockers": [
+      "classroom_map_not_selected_or_confirmed",
+      "real_target_coordinates_missing",
+      "navigation_action_not_running",
+      "no_publisher:/scan",
+      "no_publisher:/odom",
+      "no_publisher:/map",
+      "no_publisher:/amcl_pose"
+    ],
+    "action_status_topics": [],
+    "physical_checks_pending": [
+      "底盘是两轮差速还是三轮全向",
+      "串口与雷达/底盘的实际接线",
+      "当前教室地图对应关系",
+      "地图定位与 TF、实际雷达和里程计",
+      "急停和现场首次运动测试"
+    ],
+    "selected_map": null,
+    "action_available": false,
+    "packages": {
+      "move_base": "/opt/ros/kinetic/share/move_base",
+      "map_server": "/opt/ros/kinetic/share/map_server",
+      "bobac2_base": "/home/bobac2/bobac2_ws/src/bobac2_base",
+      "navfn": "/opt/ros/kinetic/share/navfn",
+      "rplidar_ros": "/home/bobac2/bobac2_ws/src/rplidar_ros",
+      "teb_local_planner": "/opt/ros/kinetic/share/teb_local_planner",
+      "amcl": "/opt/ros/kinetic/share/amcl",
+      "bobac2_navigation": "/home/bobac2/bobac2_ws/src/bobac2_navigation",
+      "gmapping": "/opt/ros/kinetic/share/gmapping",
+      "bobac2_kinematics": "/home/bobac2/bobac2_ws/src/bobac2_kinematics"
+    },
+    "ready_for_real_navigation": false,
+    "motion_enabled": false
+  },
+  "speed_publishers": {},
+  "notes": [
+    "Latest stage: lidar and isolated mapping flow verified; no actual wheel movement.",
+    "Formal classroom mapping and parking coordinates remain pending.",
+    "Earlier face measurements and navigation inventory are historical phase snapshots.",
+    "No stranger test images were saved."
+  ],
+  "unit_tests": {
+    "count": 51,
+    "passed": true,
+    "stage": "mapping_flow"
+  },
+  "navigation_launch_validation": {
+    "nodes": [
+      {
+        "remaps": [
+          [
+            "cmd_vel",
+            "/practicum_preview/blocked_cmd_vel"
+          ],
+          [
+            "move_base_simple/goal",
+            "/practicum_preview/manual_goal_disabled"
+          ]
+        ],
+        "namespace": "/practicum_preview/",
+        "type": "map_server",
+        "name": "map_server",
+        "package": "map_server"
+      },
+      {
+        "remaps": [
+          [
+            "cmd_vel",
+            "/practicum_preview/blocked_cmd_vel"
+          ],
+          [
+            "move_base_simple/goal",
+            "/practicum_preview/manual_goal_disabled"
+          ],
+          [
+            "odom",
+            "/odom"
+          ],
+          [
+            "scan",
+            "/scan"
+          ]
+        ],
+        "namespace": "/practicum_preview/",
+        "type": "move_base",
+        "name": "move_base_node",
+        "package": "move_base"
+      }
+    ],
+    "parsed_without_starting": true
+  },
+  "camera": {
+    "control_error": "",
+    "face_count": 1,
+    "last_identity": {
+      "vote_window": 6,
+      "distance": 75.48822329564922,
+      "confirmed": false,
+      "similarity": 0.8087427616119385,
+      "threshold": 0.82,
+      "person_id": null,
+      "vote_required": 4,
+      "margin": null,
+      "method": "OpenFace-128",
+      "stable_frames": 3
+    },
+    "enrollment": null,
+    "samples": {
+      "p004": 0,
+      "p001": 90,
+      "p002": 0,
+      "p003": 0
+    },
+    "recognizer": "OpenFace-128",
+    "detector_error": "",
+    "frames": 521,
+    "processing_ms": 114.0,
+    "threshold": 60.0,
+    "error": "",
+    "ready": true,
+    "detector": "OpenCV SSD ResNet-10 (isolated 3.4.2)",
+    "embedding_error": "",
+    "quality": {
+      "brightness": 58.4,
+      "sharpness": 959.3,
+      "height": 180,
+      "width": 152,
+      "clipped": false,
+      "accepted": true
+    },
+    "guidance": "已检测到人脸，但未匹配；请保持正脸，必要时补录当前光照和距离的样本",
+    "embedding_threshold": 0.82,
+    "face_boxes": [
+      {
+        "y": 52,
+        "width": 152,
+        "x": 41,
+        "height": 180
+      }
+    ]
+  },
+  "negative_final_trial": {
+    "multiple_face_frames": 2,
+    "duration_seconds": 12.041820049285889,
+    "authorized_events": 0,
+    "expected": "unknown",
+    "timestamp": 1793669266.674591,
+    "last_controller": {
+      "target": null,
+      "person": null,
+      "state": "IDLE",
+      "simulated": true,
+      "reply": "未确认授权身份，请联系现场工作人员。",
+      "motion_enabled": false
+    },
+    "actual_navigation": false,
+    "sufficient_single_face_frames": false,
+    "valid_single_face_frames": 11,
+    "frames": 56,
+    "similarity_min": 0.5328484177589417,
+    "threshold": null,
+    "similarity_max": 0.7257864475250244,
+    "course_accuracy": null,
+    "matched_candidate_frames": 0
+  },
+  "obstacle_accuracy": null,
+  "http_guards": [
+    {
+      "expected": 400,
+      "path": "/api/enroll",
+      "actual": 400
+    },
+    {
+      "expected": 400,
+      "path": "/api/save-place",
+      "actual": 400
+    },
+    {
+      "expected": 403,
+      "path": "/api/command",
+      "actual": 403
+    }
+  ],
+  "face_stage_unit_tests": {
+    "output": "..........................................\n----------------------------------------------------------------------\nRan 42 tests in 0.016s\n\nOK\n",
+    "exit_code": 0
+  },
+  "mapping_stage": {
+    "mapping_smoke": {
+      "fixture_odometry": true,
+      "speed_publishers": {},
+      "timestamp": 1793670735.309432,
+      "frame": "mapping_check/map",
+      "width": 384,
+      "saved_pgm": "/home/bobac2/bobac_practicum_run/nav_inventory/mapping_check/CHECK_ONLY_stationary.pgm",
+      "height": 384,
+      "test_only": true,
+      "usable_as_classroom_map": false,
+      "actual_map_publishers": {},
+      "saved_yaml": "/home/bobac2/bobac_practicum_run/nav_inventory/mapping_check/CHECK_ONLY_stationary.yaml",
+      "real_laser_input": true,
+      "counts": {
+        "unknown": 142180,
+        "occupied": 297,
+        "free": 4979
+      },
+      "resolution": 0.05000000074505806,
+      "actual_odom_publishers": {},
+      "metadata": {
+        "origin": [
+          -10.0,
+          -10.0,
+          0.0
+        ],
+        "occupied_thresh": 0.65,
+        "image": "/home/bobac2/bobac_practicum_run/nav_inventory/mapping_check/CHECK_ONLY_stationary.pgm",
+        "free_thresh": 0.196,
+        "negate": 0,
+        "resolution": 0.05
+      }
+    },
+    "reload_and_odom": {
+      "actual_encoder_feedback_verified": false,
+      "speed_publishers": {},
+      "fixture_encoder_feedback": true,
+      "odom_test_namespace": "/practicum_odom_check",
+      "no_messages_after_feedback_stops": true,
+      "height": 384,
+      "width": 384,
+      "fresh_increasing_stamps": true,
+      "classroom_map_completed": false,
+      "map_reloaded": true,
+      "saved_pgm_matches_reloaded_grid": true,
+      "odom_messages": 15
+    },
+    "audio_output": "pc",
+    "old_map_selected": false,
+    "live_nodes": [
+      "/rosout",
+      "/bobac_practicum",
+      "/aiui_semantic",
+      "/rplidarNode",
+      "/speech_synthesis"
+    ],
+    "hardware": {
+      "lidar": {
+        "verified": true,
+        "serial_baudrate": 115200,
+        "frame_points": 241,
+        "frame": "laser_rada_Link",
+        "driver": "rplidarNode_A1",
+        "serial_port": "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0",
+        "topic": "/scan",
+        "valid_points_example": 188,
+        "observed_hz": 7.655,
+        "configured_fov_degrees": 240
+      },
+      "chassis": {
+        "encoder_feedback_verified": false,
+        "wheel_radius_nominal_m": 0.068,
+        "confirmation": "operator_observed_two_drive_wheels_and_casters",
+        "dimensions_calibrated": false,
+        "kinematics_mode": 2,
+        "wheel_separation_nominal_m": 0.32374,
+        "type": "two_wheels"
+      },
+      "date": "2026-11-03",
+      "motion_enabled": false,
+      "classroom_map": {
+        "status": "needs_new_slam_capture",
+        "confirmed_yaml": null
+      },
+      "parking_target": {
+        "status": "operator_will_select_after_map_exists",
+        "pose": null,
+        "map_id": null
+      }
+    },
+    "formal_classroom_mapping_started": false,
+    "launches_parsed_without_starting": [
+      {
+        "nodes": [
+          {
+            "remaps": [],
+            "name": "joint_state_publisher",
+            "package": "joint_state_publisher"
+          },
+          {
+            "remaps": [],
+            "name": "robot_state_publisher",
+            "package": "robot_state_publisher"
+          },
+          {
+            "remaps": [],
+            "name": "practicum_wheel_odometry",
+            "package": "bobac_practicum"
+          },
+          {
+            "remaps": [],
+            "name": "bobac2_slam_gmapping",
+            "package": "gmapping"
+          }
+        ],
+        "args": []
+      },
+      {
+        "nodes": [
+          {
+            "remaps": [],
+            "name": "joint_state_publisher",
+            "package": "joint_state_publisher"
+          },
+          {
+            "remaps": [],
+            "name": "robot_state_publisher",
+            "package": "robot_state_publisher"
+          },
+          {
+            "remaps": [
+              [
+                "car_cmd",
+                "/practicum_disabled/motor_input"
+              ]
+            ],
+            "name": "bobac2_base_node",
+            "package": "bobac2_base"
+          },
+          {
+            "remaps": [],
+            "name": "practicum_wheel_odometry",
+            "package": "bobac_practicum"
+          },
+          {
+            "remaps": [],
+            "name": "bobac2_slam_gmapping",
+            "package": "gmapping"
+          }
+        ],
+        "args": [
+          "start_base:=true"
+        ]
+      },
+      {
+        "nodes": [
+          {
+            "remaps": [],
+            "name": "joint_state_publisher",
+            "package": "joint_state_publisher"
+          },
+          {
+            "remaps": [],
+            "name": "robot_state_publisher",
+            "package": "robot_state_publisher"
+          },
+          {
+            "remaps": [
+              [
+                "car_cmd",
+                "/car_cmd"
+              ]
+            ],
+            "name": "bobac2_base_node",
+            "package": "bobac2_base"
+          },
+          {
+            "remaps": [
+              [
+                "guarded_cmd_vel",
+                "/practicum_base/cmd_vel_safe"
+              ]
+            ],
+            "name": "practicum_velocity_watchdog",
+            "package": "bobac_practicum"
+          },
+          {
+            "remaps": [
+              [
+                "cmd_vel",
+                "/practicum_base/cmd_vel_safe"
+              ]
+            ],
+            "name": "bobac2_kinematics",
+            "package": "bobac2_kinematics"
+          },
+          {
+            "remaps": [],
+            "name": "practicum_wheel_odometry",
+            "package": "bobac_practicum"
+          },
+          {
+            "remaps": [],
+            "name": "bobac2_slam_gmapping",
+            "package": "gmapping"
+          }
+        ],
+        "args": [
+          "start_base:=true",
+          "allow_wheel_commands:=true"
+        ]
+      }
+    ],
+    "date": "2026-11-03",
+    "motion_enabled": false,
+    "next_step": "verify_actual_encoder_feedback_then_authorized_field_slam_capture_then_operator_selects_parking_target",
+    "speed_publishers": {},
+    "unit_tests": {
+      "count": 51,
+      "passed": true
+    },
+    "parking_target_selected": false,
+    "health": {
+      "obstacle_observation": {
+        "nearest": 0.28700000047683716,
+        "front_blocked": false,
+        "clusters": 14
+      },
+      "scan_fresh": true,
+      "odom_fresh": false,
+      "map_id": null,
+      "localized": false
+    },
+    "shell_syntax_ok": true
+  },
+  "latest_stage": "mapping_flow",
+  "face_stage_notes": [
+    "Final positive trial has multiple-face blocked frames; only single-face frames considered for match diagnostics.",
+    "Negative trial had too few valid single-face frames for acceptance; no candidate matches or authorizations in that window.",
+    "Continuous frames are not independent coursework accuracy trials.",
+    "No physical navigation, base, mapping or preview launch was started.",
+    "No stranger test images were saved."
+  ],
+  "health": {
+    "obstacle_observation": {
+      "nearest": 0.28700000047683716,
+      "front_blocked": false,
+      "clusters": 14
+    },
+    "scan_fresh": true,
+    "odom_fresh": false,
+    "map_id": null,
+    "localized": false
+  },
+  "navigation_preflight_stage": "earlier_face_phase_before_lidar_start"
+}

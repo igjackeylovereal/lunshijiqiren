@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-05",
+  "mode": "keyboard_mapping",
+  "master": "independent_roscore",
+  "app_args": [
+    "--ros",
+    "--auto-speech",
+    "--mapping-teleop",
+    "--mapping-keyboard"
+  ],
+  "initial_halted": true,
+  "operator_confirmed_current_estop_and_floor": true,
+  "real_map_png_http": 200,
+  "camera_ready": true,
+  "base_ack": true,
+  "base_requested_and_actual_at_check": [
+    0,
+    0,
+    0
+  ],
+  "agent_sent_nonzero_command": false,
+  "live_movement_validated": false,
+  "browser_confirmation": "operator_confirmed_keyboard_mapping_paused",
+  "automatic_mode_switch_implemented": false
+}

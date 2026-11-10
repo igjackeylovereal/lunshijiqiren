@@ -1,0 +1,5 @@
+# Planning preparation only: no recovery rotation or physical velocity topic.
+controller_frequency: 1.0
+recovery_behavior_enabled: false
+clearing_rotation_allowed: false
+shutdown_costmaps: false

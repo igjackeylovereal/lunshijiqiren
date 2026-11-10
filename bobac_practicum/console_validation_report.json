@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-03",
+  "mode": "offline",
+  "unit_and_loopback_http_tests": 71,
+  "passed": 71,
+  "javascript_syntax_checks": 4,
+  "robot_deployed": false,
+  "robot_motion_tested": false,
+  "browser_visual_verified": false,
+  "preview_url": "http://127.0.0.1:8766/",
+  "pending": [
+    "ROS map/mode process switching",
+    "real robot Python2 compatibility run",
+    "classroom mapping and navigation",
+    "independent 90 percent measurements"
+  ]
+}

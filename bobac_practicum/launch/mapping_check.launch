@@ -1,0 +1,15 @@
+<launch>
+  <!-- Isolated stationary plumbing test. Fixture TF is NOT real robot odometry. -->
+  <group ns="practicum_mapping_check">
+    <node pkg="bobac_practicum" type="mapping_check_relay.py" name="scan_relay" output="screen" />
+    <node pkg="tf" type="static_transform_publisher" name="fixture_odom_tf"
+          args="0 0 0 0 0 0 mapping_check/odom mapping_check/base 50" />
+    <node pkg="tf" type="static_transform_publisher" name="fixture_laser_tf"
+          args="0.127773333991041 0 0.29025 0 0 0 mapping_check/base mapping_check/laser 50" />
+    <include file="$(find bobac2_slam)/launch/bobac2_gmapping.launch">
+      <arg name="set_base_frame" value="mapping_check/base" />
+      <arg name="set_odom_frame" value="mapping_check/odom" />
+      <arg name="set_map_frame" value="mapping_check/map" />
+    </include>
+  </group>
+</launch>

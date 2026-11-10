@@ -1,0 +1,13 @@
+<launch>
+  <!-- Lidar only. No base or wheel command publishers. -->
+  <arg name="serial_port" default="/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0" />
+  <node pkg="rplidar_ros" type="rplidarNode_A1" name="rplidarNode" output="screen">
+    <param name="serial_port" value="$(arg serial_port)" />
+    <param name="serial_baudrate" type="int" value="115200" />
+    <param name="frame_id" value="laser_rada_Link" />
+    <param name="inverted" value="false" />
+    <param name="angle_compensate" value="true" />
+    <param name="output_angle_min" type="int" value="-120" />
+    <param name="output_angle_max" type="int" value="120" />
+  </node>
+</launch>

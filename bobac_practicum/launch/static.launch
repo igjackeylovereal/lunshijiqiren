@@ -1,0 +1,5 @@
+<launch>
+  <!-- No base, navigation, follower or velocity publisher is launched here. -->
+  <node pkg="bobac_practicum" type="app.py" name="bobac_practicum_server" output="screen"
+        args="--ros --auto-speech" />
+</launch>

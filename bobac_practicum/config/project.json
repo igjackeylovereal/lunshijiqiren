@@ -1,0 +1,30 @@
+{
+  "motion_enabled": false,
+  "navigation_action": "/move_base",
+  "map_frame": "map",
+  "base_frame": "base_footprint",
+  "camera_device": "/dev/v4l/by-id/usb-Astra_Pro_HD_Camera_Astra_Pro_HD_Camera-video-index0",
+  "camera_controls": {"brightness": 12, "gamma": 140, "backlight_compensation": 2},
+  "camera_topic": "/practicum/camera/image_raw",
+  "audio_output": "pc",
+  "recognition_threshold": 60.0,
+  "recognition_vote_required": 4,
+  "recognition_vote_window": 6,
+  "embedding_similarity_threshold": 0.82,
+  "embedding_min_margin": 0.08,
+  "identity_cooldown_seconds": 30,
+  "interaction_timeout_seconds": 30,
+  "navigation_timeout_seconds": 120,
+  "enrollment_samples": 30,
+  "people": [
+    {"id": "p001", "name": "孟熙恒", "authorized": true},
+    {"id": "p002", "name": "周高定", "authorized": true},
+    {"id": "p003", "name": "林宸涵", "authorized": true},
+    {"id": "p004", "name": "李胜洋", "authorized": true}
+  ],
+  "places": [
+    {"id": "classroom", "name": "教室", "aliases": ["教室", "课堂"], "pose": null, "map_id": null}
+  ],
+  "patrol_route": ["classroom"],
+  "requirements_pending": ["无人探索建图的验收口径", "障碍物检测是否要求物体类别", "人脸与障碍物的独立实测数据"]
+}

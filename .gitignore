@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.bak_*
+*.bag
+*.log
+.venv/
+venv/
+data/
+*.tmp

@@ -1,0 +1,17 @@
+<launch>
+  <!-- Hardware and motion are opt-in. Only verified two-wheel hardware is supported here. -->
+  <arg name="start_base" default="false" />
+  <arg name="start_lidar" default="false" />
+  <arg name="allow_wheel_commands" default="false" />
+  <param name="robot_description" textfile="$(find bobac2_description)/urdf/bobac2_description.urdf" />
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" />
+  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher" />
+  <group if="$(arg start_base)">
+    <include file="$(find bobac_practicum)/launch/base_for_mapping.launch">
+      <arg name="allow_wheel_commands" value="$(arg allow_wheel_commands)" />
+    </include>
+  </group>
+  <include if="$(arg start_lidar)" file="$(find bobac_practicum)/launch/laser_static.launch" />
+  <node pkg="bobac_practicum" type="wheel_odometry.py" name="practicum_wheel_odometry" output="screen" />
+  <include file="$(find bobac2_slam)/launch/bobac2_gmapping.launch" />
+</launch>

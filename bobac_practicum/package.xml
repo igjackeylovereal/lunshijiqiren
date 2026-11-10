@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>bobac_practicum</name><version>0.1.0</version>
+  <description>Identity, Chinese dialogue and guarded navigation integration for bobac2.</description>
+  <maintainer email="local@example.invalid">Practicum team</maintainer>
+  <license>MIT</license><buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>rospy</exec_depend><exec_depend>std_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend><exec_depend>nav_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend><exec_depend>cv_bridge</exec_depend>
+  <exec_depend>actionlib</exec_depend><exec_depend>move_base_msgs</exec_depend>
+  <exec_depend>tf</exec_depend><exec_depend>bobac2_msgs</exec_depend>
+  <exec_depend>gmapping</exec_depend><exec_depend>map_server</exec_depend>
+</package>

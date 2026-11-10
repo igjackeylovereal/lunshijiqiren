@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(bobac_practicum)
+find_package(catkin REQUIRED)
+catkin_package()
+install(DIRECTORY scripts config web assets launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
