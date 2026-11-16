@@ -95,12 +95,13 @@ class MappingLease(object):
 
 class KeyboardLease(MappingLease):
     """Held key control; unavailable directions fail closed on missing laser coverage."""
-    velocities = dict(forward=(.06, 0.), backward=(-.04, 0.), left=(0., .18), right=(0., -.18))
+    velocities = dict(forward=(.15, 0.), backward=(-.12, 0.), left=(0., .6), right=(0., -.6))
 
     def __init__(self):
         super(KeyboardLease, self).__init__(.06)
         self.direction = 'forward'
-        self.pulse_seconds = 5.
+        self.pulse_seconds = 3600.
+        self.speed = .15
 
     def readiness(self, health):
         base = dict(health, forward_clearance=1., pose=health.get('pose'))
@@ -128,7 +129,7 @@ class KeyboardLease(MappingLease):
     def tick(self, now, health):
         reason = self.readiness(health)
         if self.active:
-            if reason or not 0 <= now-self.heartbeat <= .25 or not 0 <= now-self.started < 5:
+            if reason or not 0 <= now-self.heartbeat <= .25 or not 0 <= now-self.started < self.pulse_seconds:
                 self.stop()
                 self.reason = reason or '心跳或单次按住时限已到，请松开后再按'
             else:

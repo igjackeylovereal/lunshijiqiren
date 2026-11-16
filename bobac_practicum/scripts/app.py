@@ -111,6 +111,14 @@ class Application(object):
         self.retrain()
         self.stopping = threading.Event()
         self.last_session_activity = 0.0
+        self.initial_pose_pub = None
+        if self.runtime:
+            try:
+                from geometry_msgs.msg import PoseWithCovarianceStamped
+                self.initial_pose_pub = self.runtime.rospy.Publisher(
+                    '/initialpose', PoseWithCovarianceStamped, queue_size=1)
+            except Exception:
+                self.initial_pose_pub = None
         self.voice_flow = {'awake': False, 'mode': 'chat', 'choosing': False, 'last': 0}
         self.voice_cmd_pub = None
         if self.runtime:
@@ -452,6 +460,23 @@ class Application(object):
         ok, data = self.cv2.imencode('.png', canvas)
         return data.tostring() if ok else None
 
+    def set_initial_pose(self, pose):
+        if self.initial_pose_pub is None:
+            raise ValueError('ROS 未连接，无法设置初始位姿')
+        import math
+        from geometry_msgs.msg import PoseWithCovarianceStamped
+        msg = PoseWithCovarianceStamped()
+        msg.header.frame_id = self.config.get('map_frame', 'map')
+        msg.header.stamp = self.runtime.rospy.Time.now()
+        msg.pose.pose.position.x = float(pose[0])
+        msg.pose.pose.position.y = float(pose[1])
+        msg.pose.pose.orientation.z = math.sin(float(pose[2]) / 2.0)
+        msg.pose.pose.orientation.w = math.cos(float(pose[2]) / 2.0)
+        for _ in range(3):
+            self.initial_pose_pub.publish(msg)
+            time.sleep(0.1)
+        self.log(dict(kind='initial_pose_set', x=pose[0], y=pose[1], yaw=pose[2], time=time.time()))
+
     def save_mapping_progress(self):
         if not self.mapping or not self.runtime.map_message:
             raise ValueError('实际建图尚未就绪')
@@ -461,7 +486,18 @@ class Application(object):
         directory = os.path.expanduser('~/bobac_practicum_run/maps')
         if not os.path.isdir(directory):
             os.makedirs(directory, 0o700)
-        prefix = directory + '/classroom_draft_' + time.strftime('%Y%m%d_%H%M%S')
+        pending = os.path.join(self.data, 'pending_map.txt')
+        chosen = ''
+        if os.path.isfile(pending):
+            try:
+                chosen = open(pending).read().strip()
+                os.remove(pending)
+            except Exception:
+                chosen = ''
+        if chosen:
+            prefix = directory + '/' + chosen
+        else:
+            prefix = directory + '/classroom_draft_' + time.strftime('%Y%m%d_%H%M%S')
         process = subprocess.Popen(['timeout', '8', 'rosrun', 'map_server', 'map_saver', '-f', prefix, 'map:=/map'],
                                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         output = process.communicate()[0]
@@ -784,6 +820,28 @@ class Handler(BaseHTTPRequestHandler):
                 app.controller.tick()
                 app.controller.navigate(place)
                 return self.respond(200, dict(ok=True, simulated=app.controller.nav.simulated))
+            if self.path == '/api/initial_pose':
+                meta = app.map_metadata()
+                if not meta.get('ready'):
+                    raise ValueError('地图尚未加载，无法设置初始位姿')
+                pose = pixel_goal(meta, data.get('u'), data.get('v'), data.get('yaw', 0))
+                app.set_initial_pose(pose)
+                return self.respond(200, dict(ok=True, x=pose[0], y=pose[1], yaw=pose[2]))
+            if self.path == '/api/map/new':
+                name = (data.get('name') or '').strip()
+                if not name or len(name) > 40:
+                    raise ValueError('地图名长度需在 1~40 字')
+                for bad in '/\\:*?"<>| ':
+                    if bad in name:
+                        raise ValueError('地图名不能包含空格或 / \\ : * ? " < > |')
+                with open(os.path.join(app.data, 'pending_map.txt'), 'w') as stream:
+                    stream.write(name)
+                app.log(dict(kind='map_new_requested', name=name, time=time.time()))
+                subprocess.Popen(['bash', os.path.expanduser('~/bobac_mode.sh'), 'mapping'],
+                                 stdout=open(os.devnull, 'w'), stderr=subprocess.STDOUT,
+                                 preexec_fn=os.setsid)
+                return self.respond(200, dict(ok=True, switching=True, name=name, wait_seconds=45,
+                                              message='正在切换到建图模式，建好后点保存即用此名字'))
             if self.path == '/api/mode':
                 target = data.get('mode')
                 if target not in ('nav', 'mapping'):

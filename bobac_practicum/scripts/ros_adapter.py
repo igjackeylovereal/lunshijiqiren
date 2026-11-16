@@ -126,7 +126,13 @@ class RosRuntime(object):
         origin = msg.info.origin
         metadata = [msg.info.width, msg.info.height, msg.info.resolution,
                     origin.position.x, origin.position.y, origin.orientation.z, origin.orientation.w]
-        body = json.dumps(metadata).encode('ascii') + bytes(bytearray((v + 1) for v in msg.data))
+        body = json.dumps(metadata).encode('ascii')
+        values = msg.data
+        step = max(1, len(values) // 200000)
+        if step > 1:
+            body += bytes(bytearray((values[i] + 1) for i in range(0, len(values), step)))
+        else:
+            body += bytes(bytearray((v + 1) for v in values))
         self.map_id = hashlib.sha256(body).hexdigest()
 
     def position(self):

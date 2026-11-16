@@ -78,7 +78,9 @@ def main():
         for axis in (14, 21, 28):
             msg.pose.covariance[axis], msg.twist.covariance[axis] = 1e6, 1e6
         publisher.publish(msg)
-        broadcaster.sendTransform((value['x'], value['y'], 0), quat, stamp, base, frame)
+        # TF 略微超前，避免 amcl/gmapping 的 MessageFilter 在扫描时刻查不到 odom
+        tf_stamp = stamp + rospy.Duration(0.3)
+        broadcaster.sendTransform((value['x'], value['y'], 0), quat, tf_stamp, base, frame)
 
     rospy.Subscriber('car_data', car_data, received, queue_size=5)
     # No telemetry => no odometry / TF. A periodic zero would hide a disconnected base.

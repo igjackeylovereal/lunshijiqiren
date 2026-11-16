@@ -13,5 +13,23 @@
   </group>
   <include if="$(arg start_lidar)" file="$(find bobac_practicum)/launch/laser_static.launch" />
   <node pkg="bobac_practicum" type="wheel_odometry.py" name="practicum_wheel_odometry" output="screen" />
-  <include file="$(find bobac2_slam)/launch/bobac2_gmapping.launch" />
+  <!-- 显式 gmapping：厂家 include 里 TF 时机不对，导致 100% 丢帧、/map 不更新 -->
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <param name="odom_frame" value="odom" />
+    <param name="base_frame" value="base_footprint" />
+    <param name="map_frame" value="map" />
+    <param name="map_update_interval" value="1.0" />
+    <param name="particles" value="60" />
+    <param name="linearUpdate" value="0.15" />
+    <param name="angularUpdate" value="0.1" />
+    <param name="maxUrange" value="8.0" />
+    <param name="delta" value="0.05" />
+    <param name="xmin" value="-12.0" />
+    <param name="xmax" value="12.0" />
+    <param name="ymin" value="-12.0" />
+    <param name="ymax" value="12.0" />
+
+    <remap from="scan" to="/scan" />
+  </node>
+
 </launch>
