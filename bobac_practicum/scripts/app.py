@@ -826,7 +826,7 @@ class Handler(BaseHTTPRequestHandler):
                     raise ValueError('地图尚未加载，无法设置初始位姿')
                 pose = pixel_goal(meta, data.get('u'), data.get('v'), data.get('yaw', 0))
                 app.set_initial_pose(pose)
-                return self.respond(200, dict(ok=True, x=pose[0], y=pose[1], yaw=pose[2]))
+                return self.respond(200, dict(ok=True, x=px, y=py, yaw=pyaw))
             if self.path == '/api/map/new':
                 name = (data.get('name') or '').strip()
                 if not name or len(name) > 40:
@@ -891,6 +891,36 @@ class Handler(BaseHTTPRequestHandler):
                 app.listen()
             elif self.path == '/api/speak':
                 app.speak_async(app.controller.snapshot()['reply'])
+            elif self.path == '/api/place/save_from_map':
+                name = (data.get('name') or '').strip()
+                if not name or len(name) > 20:
+                    raise ValueError('地点名称需 1~20 个字')
+                meta = app.map_metadata()
+                if not meta.get('ready'):
+                    raise ValueError('地图尚未加载，无法设定地点')
+                if app.mapping:
+                    raise ValueError('建图模式下不能设定导航地点')
+                pose = pixel_goal(meta, data.get('u'), data.get('v'), data.get('yaw', 0))
+                px, py, pyaw = pose['x'], pose['y'], pose['yaw']
+                map_id = meta.get('map_id')
+                with app.controller.lock:
+                    places = app.config['places']
+                    hit = [p for p in places if p.get('name') == name]
+                    if hit:
+                        target = hit[0]
+                        target.update(pose=dict(x=px, y=py, yaw=pyaw), map_id=map_id)
+                        if name not in target.get('aliases', []):
+                            target.setdefault('aliases', []).append(name)
+                    else:
+                        target = dict(id='place_%d' % (len(places) + 1), name=name,
+                                      aliases=[name], map_id=map_id,
+                                      pose=dict(x=px, y=py, yaw=pyaw))
+                        places.append(target)
+                    save_json(app.args.config, app.config)
+                app.log(dict(kind='place_saved', name=name, x=px, y=py,
+                             map_id=map_id, time=time.time()))
+                return self.respond(200, dict(ok=True, id=target['id'], name=name,
+                                              x=px, y=py, yaw=pyaw))
             elif self.path == '/api/save-place':
                 if not app.runtime or not app.runtime.map_id:
                     raise ValueError('没有实际地图，不能记录目标点')
@@ -901,7 +931,7 @@ class Handler(BaseHTTPRequestHandler):
                     places = [p for p in app.config['places'] if p['id'] == data.get('place_id')]
                     if len(places) != 1:
                         raise ValueError('未知地点')
-                    places[0].update(pose=dict(x=pose[0], y=pose[1], yaw=pose[2]), map_id=app.runtime.map_id)
+                    places[0].update(pose=dict(x=px, y=py, yaw=pyaw), map_id=app.runtime.map_id)
                     save_json(app.args.config, app.config)
             else:
                 return self.respond(404, {'error': '未找到'})

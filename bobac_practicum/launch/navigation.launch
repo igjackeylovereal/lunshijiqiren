@@ -20,6 +20,10 @@
   <include if="$(arg start_lidar)" file="$(find bobac_practicum)/launch/laser_static.launch" />
   <node pkg="bobac_practicum" type="wheel_odometry.py" name="practicum_wheel_odometry" output="screen" />
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_yaml)" />
+  <!-- 静止时也持续更新，避免 /amcl_pose 与 map->odom 过期 -->
+  <param name="/amcl/update_min_d" value="0.0" />
+  <param name="/amcl/update_min_a" value="0.0" />
+  <param name="/amcl/transform_tolerance" value="1.0" />
   <include file="$(find bobac2_navigation)/launch/amcl.launch">
     <arg name="initial_pose_x" value="$(arg initial_pose_x)" />
     <arg name="initial_pose_y" value="$(arg initial_pose_y)" />
